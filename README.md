@@ -1,5 +1,8 @@
 # Accessing and visualising ONS data
 ## Project proposal
+My team regularly uses ONS data, however, the process for accessing the data is time consuming as the data can't be accessed easily through our current data platforms. This means that teams have to manually download their data from the ONS website in spreadsheets before they are able to visualise or analyse the data. For time series data which regularly updates this is a very timeconsuming process as the data needs to be redownloaded everytime there is a new data release. However, with the new release of the ONS API this process should be a lot quicker and more efficient than it has been previously. By using the ONS API to access data it removes the previously manual processes, freeing up time for analysis.
+
+The data I am planning to focus on for this prototype is the UK credit cards data. It is a timeseries of the spend on UK credit cards.
 
 ## Project design
 
@@ -15,9 +18,7 @@
 
 ## Evaluation
 
-1.	Propose a new product for your employer or a small-scale side project for yourself or your team. It may be either:
-a.	A simple web app, for example, a currency converter (written in HTML, CSS, and JavaScript)
-b.	A data product, for example, a Jupyter notebook with data visualisations that collect data from a web API or an online SQL database
+
 2.	Design and prototype your product using Figma or an alternative
 3.	Plan your project using modern planning techniques (for example, agile with sprints). Use a project management tool (for example, GitHub Projects, a free alternative to Jira). Add a dedicated section to your README that shows how you have used your project management tools
 4.	Capture the requirements for your project as issues (aka tickets) accessible via your chosen project management tool
