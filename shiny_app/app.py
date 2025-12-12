@@ -22,6 +22,7 @@ def server(input, output, session):
         plt.title("A histogram", size=20)
         plt.hist(x=x, bins=input.slider(), color="grey", ec="black")
 
-
-
 app = App(ui=app_ui, server=server) 
+
+#shinylive export shiny_app docs  
+#python -m http.server --directory docs --bind localhost 8008 
