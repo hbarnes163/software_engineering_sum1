@@ -2,7 +2,7 @@
 ## Project proposal
 My team regularly uses ONS data, however, the process for accessing the data is time consuming as the data can't be accessed easily through our current data platforms. This means that teams have to manually download their data from the ONS website in spreadsheets before they are able to visualise or analyse the data. For time series data which regularly updates this is a very timeconsuming process as the data needs to be redownloaded everytime there is a new data release. However, with the new release of the ONS API this process should be a lot quicker and more efficient than it has been previously. By using the ONS API to access data it removes the previously manual processes, freeing up time for analysis.
 
-The data I am planning to focus on for this prototype is the UK credit cards data. It is a timeseries of the spend on UK credit cards.
+The data I am planning to focus on for this prototype is the UK credit cards data. It is a timeseries of the spend on UK credit cards. Which is very relevant to my workplace which is in charge of payment settlement. However, the final working project must be able to handle accessing all ONS data.
 
 ## Project design
 
