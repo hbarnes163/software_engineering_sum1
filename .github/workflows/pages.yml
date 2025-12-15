@@ -1,0 +1,65 @@
+
+# .github/workflows/pages.yml
+name: Build and Deploy Shinylive
+
+on:
+  push:
+    branches: [ github_pages_testing ]           # adjust if you deploy from another branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up CPython
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"           # 3.11 also fine
+
+      - name: Sanitise Python env
+        # Avoid stray PYTHONHOME/PYTHONPATH that can break stdlib resolution
+        run: |
+          unset PYTHONHOME
+          unset PYTHONPATH
+
+      - name: Upgrade pip and install shinylive
+        run: |
+          python -m pip install --upgrade pip
+          pip install shinylive
+
+      - name: Export Shinylive app
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          # Export your app directory to a static site (HTML/JS/CSS + Pyodide assets)
+          shinylive export app site --subdir "$REPO_NAME"
+          # If you want to pin Pyodide:
+          # shinylive export app site --subdir "$REPO_NAME" \
+          #   --pyodide-url https://cdn.jsdelivr.net/pyodide/v0.24.1/full/
+
+      - name: Verify build
+        run: |
+          test -f site/index.html
+          echo "Export OK: site/index.html present."
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+           - name: Deploy to GitHub Pages
