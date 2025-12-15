@@ -9,8 +9,7 @@ app_ui = ui.page_fluid(
             ui.h2("Page Charts"),
             ui.hr(),
             ui.input_slider(id="slider", label="Number of bins:", min=5, max=25, value=15)
-        ),
-        ui.output_plot(id="histogram")
+        )
     )
 )
 
