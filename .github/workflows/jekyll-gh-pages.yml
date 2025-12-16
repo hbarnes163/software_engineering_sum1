@@ -36,6 +36,21 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+      - name: Set up CPython
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"           # 3.11 also fine
+
+      - name: Sanitise Python env
+        # Avoid stray PYTHONHOME/PYTHONPATH that can break stdlib resolution
+        run: |
+          unset PYTHONHOME
+          unset PYTHONPATH
+
+      - name: Upgrade pip and install shinylive
+        run: |
+          python -m pip install --upgrade pip
+          pip install shinylive
 
   # Deployment job
   deploy:
